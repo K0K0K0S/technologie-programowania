@@ -9,6 +9,9 @@ public class gitEx
             //manchester united > liverpool
         }
     }
-
+Skibidi lapapa
+    {public int twojStary Virgil, to nieprawda, ze manchester united jest lepszy od Liverpoolu}
+    Chopin goat
 }
+
 
