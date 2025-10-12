@@ -9,9 +9,10 @@ public class gitEx
             //manchester united > liverpool
         }
     }
-    //to nieprawda, ze manchester united jest lepszy od liverpoolu
+    //to nieprawda, ze manchester united jest lepszy od liverpoolu, jest zdecydowanie lepszy a Steve Gerrard jest overrated
     //Chopin goat
 }
+
 
 
 
