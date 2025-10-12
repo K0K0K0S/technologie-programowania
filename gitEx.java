@@ -6,7 +6,9 @@ public class gitEx
         {
             System.out.print(args[i] + "   ");
             //wspaniały kod mareczku
+            //manchester united > liverpool
         }
     }
 
 }
+
