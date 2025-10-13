@@ -14,7 +14,8 @@ public class gitEx
 }
 //Dziś jest 12 października
 //Nie chce się wysłać
-// sexiak z ciebie
-// Madzia poleca ;)
+// geniusz z ciebie
+// Magda poleca 
+
 
 
