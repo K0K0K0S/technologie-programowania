@@ -1,18 +1,21 @@
 package com.allegro.maven;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Scanner;
 public class Login 
 {
     public static TextMenus menus = new TextMenus();
     private static Scanner scanner = new Scanner(System.in);
-
+    Connection conn = DriverManager.getConnection("mysql://root:oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK@hopper.proxy.rlwy.net:29959/railway","root","oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK");
+    Statement stmt = conn.createStatement();
     public static void MainMenu()
     {
-        boolean flag1 = true;
-        System.out.println(menus.welcomeText);
-        while(flag1)
+        Boolean Flag1 = true;
+        System.out.println(menus.WelcomeText);
+        while(Flag1)
         {
-            System.out.println(menus.mainMenu);
+            System.out.println(menus.MainMenu);
             int choice1 = scanner.nextInt();
             switch(choice1)
             {
@@ -26,21 +29,21 @@ public class Login
                     AdminLogin();
                     break;
                 case 4:
-                    flag1 = false;
-                    System.out.println(menus.exitText);
+                    Flag1 = false;
+                    System.out.println("Wyjście z programu");
                     break;
                 default:
-                    System.out.println(menus.errorInvalidChoice);
+                    System.out.println(menus.ErrorInvalidChoice);
             }
         }
 
     }
     public static void UserMenu()
     {
-        boolean flag2 = true;
-        while(flag2)
+        Boolean Flag2 = true;
+        while(Flag2)
         {
-            System.out.println(menus.userMenu);
+            System.out.println(menus.UserMenu);
             int choice2 = scanner.nextInt();
             switch(choice2)
             {
@@ -51,19 +54,19 @@ public class Login
                     UserLogin();
                     break;
                 case 3:
-                    flag2 = false;
+                    Flag2 = false;
                     break;
                 default:
-                    System.out.println(menus.errorInvalidChoice);
+                    System.out.println(menus.ErrorInvalidChoice);
             }
         }
     }
     public static void CourierMenu()
     {
-        boolean flag3 = true;
-        while(flag3)
+        Boolean Flag3 = true;
+        while(Flag3)
         {
-            System.out.println(menus.courierMenu);
+            System.out.println(menus.CourierMenu);
             int choice3 = scanner.nextInt();
             switch(choice3)
             {
@@ -71,16 +74,16 @@ public class Login
                     // Courier login
                     break;
                 case 2:
-                    flag3 = false;
+                    Flag3 = false;
                     break;
                 default:
-                    System.out.println(menus.errorInvalidChoice);
+                    System.out.println(menus.ErrorInvalidChoice);
             }
         }
     }
     public static void AdminLogin()
     {
-        System.out.println(menus.adminLoginPrompt);
+        System.out.println(menus.AdminLoginPrompt);
         while(true)
         {
             String adminCode = scanner.nextLine();
@@ -97,17 +100,17 @@ public class Login
     public static void RegisterUser()
     {
         scanner.nextLine(); // czyszczenie bufora
-        String firstName, lastName, PESEL, username, password;
-        System.out.println(menus.userRegistrationPrompt);
+        String Imie, Nazwisko, Pesel, nazwaUzytkownika, Haslo, Adres;
+        System.out.println(menus.UserRegistrationPrompt);
         System.out.print("Imię: ");
-        firstName = scanner.nextLine();
+        Imie = scanner.nextLine();
         System.out.print("Nazwisko: ");
-        lastName = scanner.nextLine();
+        Nazwisko = scanner.nextLine();
         System.out.print("PESEL: ");
         while(true)
         {
-            PESEL = scanner.nextLine();
-            if(PESEL.length() != 11)
+            Pesel = scanner.nextLine();
+            if(Pesel.length() != 11)
             {
                 System.out.print("PESEL musi mieć 11 znaków. Podaj ponownie: ");
             }
@@ -119,11 +122,11 @@ public class Login
         System.out.print("Nazwa użytkownika: ");
         while(true)
         {
-            username = scanner.nextLine();
-            boolean containsForbidden = false;
-            for(String forbiddenWord : menus.forbiddenWords)
+            nazwaUzytkownika = scanner.nextLine();
+            Boolean containsForbidden = false;
+            for(String forbiddenWord : menus.ListaSlowZabronionych)
             {
-                if(username.contains(forbiddenWord))
+                if(nazwaUzytkownika.contains(forbiddenWord))
                 {
                     containsForbidden = true;
                     break;
@@ -138,8 +141,12 @@ public class Login
                 break;
             }
         }
+        System.out.print("Adres: ");
+        Adres = scanner.nextLine();
         System.out.print("Hasło: ");
-        password = scanner.nextLine();
+        Haslo = scanner.nextLine();
+        String request ="INSERT INTO Users (Username, Password, Address) VALUES ('" + nazwaUzytkownika + "', '" + Haslo + "', '" + Adres + "');";
+        stmt.executeUpdate(request);
         //tu tworzyc użytkownika w bazie danych
         // i zwróć jego id, chyba że logujemy się po nazwie użytkownika
     }
@@ -147,9 +154,9 @@ public class Login
     {
         //zależy czy logujemy się po nazwie użytkownika czy po id
         System.out.print("Nazwa użytkownika: ");
-        String username = scanner.nextLine();
+        String nazwaUzytkownika = scanner.nextLine();
         System.out.print("Hasło: ");
-        String password = scanner.nextLine();
+        String haslo = scanner.nextLine();
         // User login code here
     }
 
