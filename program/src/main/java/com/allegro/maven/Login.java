@@ -142,14 +142,14 @@ public class Login
                 break;
             }
         }
-        try (Connection conn = DriverManager.getConnection("mysql://root:oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK@hopper.proxy.rlwy.net:29959/railway","root","oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://root:oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK@hopper.proxy.rlwy.net:29959/railway","root","oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK");
             Statement stmt = conn.createStatement();)
         {
             System.out.print("Adres: ");
             address = scanner.nextLine();
             System.out.print("Hasło: ");
             password = scanner.nextLine();
-            String request ="INSERT INTO Users (Username, Password, Address) VALUES ('" + username + "', '" + password + "', '" + address + "');";
+            String request ="INSERT INTO Users (Username) VALUES ('" + username + "');";
             stmt.executeUpdate(request);
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -160,13 +160,12 @@ public class Login
     public static void UserLogin()
     {
         //zależy czy logujemy się po nazwie użytkownika czy po id
-        System.out.print("Nazwa użytkownika: ");
+        System.out.println("Nazwa użytkownika: ");
         String username = scanner.nextLine();
-        System.out.print("Hasło: ");
+        System.out.println("Hasło: ");
         String password = scanner.nextLine();
         // User login code here
     }
-
 
     public static void main(String[] args) 
     {
