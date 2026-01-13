@@ -1,9 +1,12 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Scanner;
 public class Login 
 {
     public static TextMenus menus = new TextMenus();
     private static Scanner scanner = new Scanner(System.in);
-
+    Connection conn = DriverManager.getConnection("mysql://root:oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK@hopper.proxy.rlwy.net:29959/railway","root","oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK");
+    Statement stmt = conn.createStatement();
     public static void MainMenu()
     {
         Boolean Flag1 = true;
@@ -95,7 +98,7 @@ public class Login
     public static void RegisterUser()
     {
         scanner.nextLine(); // czyszczenie bufora
-        String Imie, Nazwisko, Pesel, nazwaUzytkownika, Haslo;
+        String Imie, Nazwisko, Pesel, nazwaUzytkownika, Haslo, Adres;
         System.out.println(menus.UserRegistrationPrompt);
         System.out.print("Imię: ");
         Imie = scanner.nextLine();
@@ -136,8 +139,12 @@ public class Login
                 break;
             }
         }
+        System.out.print("Adres: ");
+        Adres = scanner.nextLine();
         System.out.print("Hasło: ");
         Haslo = scanner.nextLine();
+        String request ="INSERT INTO Users (Username, Password, Address) VALUES ('" + nazwaUzytkownika + "', '" + Haslo + "', '" + Adres + "');";
+        stmt.executeUpdate(request);
         //tu tworzyc użytkownika w bazie danych
         // i zwróć jego id, chyba że logujemy się po nazwie użytkownika
     }
