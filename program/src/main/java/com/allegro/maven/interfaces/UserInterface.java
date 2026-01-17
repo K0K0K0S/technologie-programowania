@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.allegro.maven.dao.ItemDao;
 import com.allegro.maven.model.Item;
+import com.allegro.maven.service.OrderService;
 
 public class UserInterface
 {

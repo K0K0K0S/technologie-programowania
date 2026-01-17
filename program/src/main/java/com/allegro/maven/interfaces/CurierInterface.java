@@ -12,19 +12,21 @@ public class CurierInterface
     public static String location;
     public static int curierID;
     public static String curierName;
+
+    private static final DeliveryDao deliveryDao = new DeliveryDao();
     
     private static String MENU = "1) Zaktualizuj swoją lokalizację\n2) Przeglądaj przypisane dostawy\n3) Pokaż paczki w okolicy\n4) Dostarcz paczkę\n5) Wyloguj się";    
     
     private static void RunCourier()
     {
-        System.out.println("Witaj "+ CurierName +"! Co chciałbyś dzisiaj zrobić?");
+        System.out.println("Witaj "+ curierName +"! Co chciałbyś dzisiaj zrobić?");
         boolean flag = true;
         while(flag)
         {
             System.out.println(MENU);
             int in = scanner.nextInt();
             scanner.nextLine();
-            
+
             switch(in)
             {
                 case 1:
@@ -35,7 +37,7 @@ public class CurierInterface
                 }
                 case 2:
                 {
-                    List<Delivery> deliveries = deliveryDao.getDeliveriesByCurier(curierId);
+                    List<Delivery> deliveries = deliveryDao.getDeliveriesByCurier(curierID);
                     System.out.println("Twoje dostawy:");
                     for (Delivery d : deliveries)
                     {
@@ -64,7 +66,7 @@ public class CurierInterface
                 {
                     System.out.println("Podaj ID paczki do dostarczenia:");
                     int packageID = scanner.nextInt();
-                    deliveryDao.updateDeliveryStatus(packageId, "Dostarczono");
+                    deliveryDao.updateDeliveryStatus(packageID, "Dostarczono");
                     System.out.println("Paczka oznaczona jako dostarczona");
                     break;
                 }
