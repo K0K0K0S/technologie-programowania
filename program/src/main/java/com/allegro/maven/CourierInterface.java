@@ -1,17 +1,15 @@
 package com.allegro.maven;
-import java.util.*;
-import java.sql.DriverManager;
-import java.sql.Connection;
+import java.util.Scanner;
 public class CourierInterface 
 {
     private static Scanner scanner = new Scanner(System.in);
     public static String Location;
     public static int CourierID;
     public static String CourierName;
-    private static String menu = "1) Zaaktualizuj swja lokalizacje\n2) Przegladaj przypisane dostawy\n3) Pokaz paczki w okolicy\n4) Dostarcz paczke\n5) Wyloguj sie";    
+    private static String menu = "1) Zaktualizuj swoją lokalizację\n2) Przegladaj przypisane dostawy\n3) Pokaż paczki w okolicy\n4) Dostarcz paczkę\n5) Wyloguj się";    
     private static void RunCourier()
     {
-        System.out.println("Witaj "+ CourierName +"! co chciałbyś dzisiaj zrobić?");
+        System.out.println("Witaj "+ CourierName +"! Co chciałbyś dzisiaj zrobić?");
         boolean flag = true;
         while(flag)
         {
@@ -23,7 +21,7 @@ public class CourierInterface
                 {
                     System.out.println("Podaj swoją aktualną lokalizację (miasto):");
                     Location = scanner.next();
-                    System.out.println("Lokalizacja zaktualizowana na: " + Location + "Utrzymuj dobrą pracę!");
+                    System.out.println("Lokalizacja zaktualizowana na: " + Location + " Utrzymuj dobrą pracę!");
                 }
                 case 2:
                 {
