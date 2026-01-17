@@ -1,6 +1,6 @@
 package com.allegro.maven.model;
 
-public class Curier
+public class Courier
 {
     private int id;
     private int companyId;
@@ -9,7 +9,7 @@ public class Curier
     private String surname;
     private double salary;
 
-    public Curier() {}
+    public Courier() {}
 
     // Gettery i settery
 }

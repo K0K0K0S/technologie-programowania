@@ -2,7 +2,7 @@ package com.allegro.maven.interfaces;
 
 import java.util.Scanner;
 
-import com.allegro.maven.dao.CurierDao;
+import com.allegro.maven.dao.CourierDao;
 import com.allegro.maven.dao.UserDao;
 
 public class AdminInterface 
@@ -10,7 +10,7 @@ public class AdminInterface
     private static Scanner scanner = new Scanner(System.in);
 
     private static final UserDao userDao = new UserDao();
-    private static final CurierDao curierDao = new CurierDao();
+    private static final CourierDao curierDao = new CourierDao();
 
     private static String menu = "1) Przeglądaj użytkowników\n2) Zbanuj użytkownika\n 3) Przeglądaj kurierów\n4) Dodaj kuriera\n5) Zwolnij kuriera\n6) Wyloguj się";
 
@@ -26,9 +26,9 @@ public class AdminInterface
             {
                 case 1 -> showUsers();
                 case 2 -> banUser();
-                case 3 -> addCurier();
-                case 4 -> showCuriers();
-                case 5 -> fireCurier();
+                case 3 -> addCourier();
+                case 4 -> showCouriers();
+                case 5 -> fireCourier();
                 case 6-> flag = false;
                 default -> System.out.println("Nieprawidłowy wybór");
             }
@@ -47,12 +47,12 @@ public class AdminInterface
         userDao.banUser(id);
     }
 
-    private static void showCuriers()
+    private static void showCouriers()
     {
-        curierDao.getAllCuriers().forEach(System.out::println);
+        curierDao.getAllCouriers().forEach(System.out::println);
     }
 
-    private static void addCurier() 
+    private static void addCourier() 
     {
         System.out.println("Login kuriera: ");
         String login = scanner.nextLine();
@@ -72,10 +72,10 @@ public class AdminInterface
         System.out.println("Pensja: ");
         double salary = scanner.nextDouble();
 
-        curierDao.addCurier(login, password, companyId, name, surname, salary);
+        curierDao.addCourier(login, password, companyId, name, surname, salary);
     }
 
-    private static void fireCurier()
+    private static void fireCourier()
     {
         System.out.println("ID kuriera do zwolnienia: ");
         int id = scanner.nextInt();

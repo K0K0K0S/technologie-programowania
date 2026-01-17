@@ -10,14 +10,14 @@ import java.util.List;
 public class DeliveryDao {
 
     // Pobranie wszystkich dostaw przypisanych do kuriera
-    public List<Delivery> getDeliveriesByCurier(int curierId) {
+    public List<Delivery> getDeliveriesByCourier(int courierId) {
         List<Delivery> deliveries = new ArrayList<>();
-        String sql = "SELECT * FROM Deliveries WHERE curier_id = ? ORDER BY date_of_delivery DESC";
+        String sql = "SELECT * FROM Deliveries WHERE courier_id = ? ORDER BY date_of_delivery DESC";
 
         try (Connection conn = Database.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, curierId);
+            ps.setInt(1, courierId);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -75,7 +75,7 @@ public class DeliveryDao {
     private Delivery mapDelivery(ResultSet rs) throws SQLException {
         Delivery d = new Delivery();
         d.setOrderId(rs.getInt("order_id"));
-        d.setCurierId(rs.getInt("curier_id"));
+        d.setCourierId(rs.getInt("courier_id"));
         d.setStatus(rs.getString("status"));
         Timestamp ts = rs.getTimestamp("date_of_delivery");
         if (ts != null) d.setDateOfDelivery(ts.toLocalDateTime());
