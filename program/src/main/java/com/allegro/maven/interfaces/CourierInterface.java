@@ -1,4 +1,4 @@
-package com.allegro.maven;
+package com.allegro.maven.interfaces;
 import java.util.Scanner;
 public class CourierInterface 
 {
