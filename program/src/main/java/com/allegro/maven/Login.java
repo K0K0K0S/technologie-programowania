@@ -92,8 +92,9 @@ public class Login
             {
                 break;
             }
-            else
+            else if(adminCode.equals("Pompki")) // przykładowy kod dostępu
             {
+                System.out.println("Zalogowano jako administrator.");
                 // Admin authentication code here
             }
         }
@@ -149,8 +150,10 @@ public class Login
             address = scanner.nextLine();
             System.out.print("Hasło: ");
             password = scanner.nextLine();
-            String request ="INSERT INTO Users (Username) VALUES ('" + username + "');";
-            stmt.executeUpdate(request);
+            String request1 ="INSERT INTO Users (Username) VALUES ('" + username + "');";
+            stmt.executeUpdate(request1);
+            String request2 = "INSERT INTO User_info (PESEL, Imie, Nazwisko, Adress, Hasło) VALUES ('" + PESEL + "', '" + firstName + "', '" + lastName + "', '" + address + "', '" + password + "');";
+            stmt.executeUpdate(request2);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -159,12 +162,32 @@ public class Login
     }
     public static void UserLogin()
     {
+        scanner.nextLine();
         //zależy czy logujemy się po nazwie użytkownika czy po id
         System.out.println("Nazwa użytkownika: ");
         String username = scanner.nextLine();
         System.out.println("Hasło: ");
         String password = scanner.nextLine();
         // User login code here
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://root:oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK@hopper.proxy.rlwy.net:29959/railway","root","oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK");
+            Statement stmt = conn.createStatement();)
+        {
+            String query = "SELECT * FROM Users u JOIN User_info ui ON u.UserID = ui.UserID WHERE u.Username = '" + username + "' AND ui.Hasło = '" + password + "';";
+            var rs = stmt.executeQuery(query);
+            if(rs.next())
+            {
+                int userID = rs.getInt("UserID");
+                String firstName = rs.getString("Imie");
+                System.out.println("Zalogowano jako " + firstName);
+                //UserInterface.RunUser(userID, firstName);
+            }
+            else
+            {
+                System.out.println("Nieprawidłowa nazwa użytkownika lub hasło.");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static void main(String[] args) 
