@@ -2,13 +2,16 @@ package com.allegro.maven;
 import java.util.*;
 import java.sql.DriverManager;
 import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 public class CourierInterface 
 {
     private static Scanner scanner = new Scanner(System.in);
     public static String Location;
     public static int CourierID;
     public static String CourierName;
-    private static String menu = "1) Zaaktualizuj swja lokalizacje\n2) Przegladaj przypisane dostawy\n3) Pokaz paczki w okolicy\n4) Dostarcz paczke\n5) Wyloguj sie";    
+    private static String menu = "1) Zaaktualizuj swja lokalizacje\n2) Przegladaj przypisane dostawy\n3) Pokaz paczki w okolicy\n4) Dostarcz / Odbierz paczke \n5) Wyloguj sie";    
     private static void RunCourier()
     {
         System.out.println("Witaj "+ CourierName +"! co chciałbyś dzisiaj zrobić?");
@@ -27,7 +30,24 @@ public class CourierInterface
                 }
                 case 2:
                 {
-                    //Przegladanie przypisanych dostaw
+                    try(Connection connection = DriverManager.getConnection("jdbc:mysql://root:oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK@hopper.proxy.rlwy.net:29959/railway\",\"root\",\"oEZEQyzBUNjknQOXuQNiJuUmwhyOLNRK");
+                        Statement statement = connection.createStatement();)
+                    {
+                        String query = "SELECT * FROM Deliveries WHERE CourierID = " + CourierID + " AND Status = 'Assigned'";
+                        ResultSet resultSet = statement.executeQuery(query);
+                        System.out.println("Twoje przypisane dostawy:");
+                        while(resultSet.next())
+                        {
+                            int deliveryID = resultSet.getInt("DeliveryID");
+                            String packageDetails = resultSet.getString("PackageDetails");
+                            String destination = resultSet.getString("Destination");
+                            System.out.println("Dostawa ID: " + deliveryID + ", Szczegóły paczki: " + packageDetails + ", Miejsce docelowe: " + destination);
+                        }
+                    }
+                    catch(SQLException e)
+                    {
+                        e.printStackTrace();
+                    }
                 }
                 case 3:
                 {
