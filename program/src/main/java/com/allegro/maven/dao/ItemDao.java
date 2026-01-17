@@ -1,10 +1,10 @@
 package com.allegro.maven.dao;
 
-import java.sql.*;
-import java.util.*;
-
 import com.allegro.maven.model.Item;
 import com.allegro.maven.db.Database;
+
+import java.sql.*;
+import java.util.*;
 
 public class ItemDao {
 

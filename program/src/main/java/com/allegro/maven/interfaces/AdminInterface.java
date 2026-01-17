@@ -1,10 +1,9 @@
 package com.allegro.maven.interfaces;
-//import java.lang.foreign.SymbolLookup;
+
 import java.util.Scanner;
-import com.allegro.maven.dao.UserDao;
+
 import com.allegro.maven.dao.CurierDao;
-//import java.sql.DriverManager;
-//import java.sql.Connection;
+import com.allegro.maven.dao.UserDao;
 
 public class AdminInterface 
 {
@@ -22,7 +21,6 @@ public class AdminInterface
         while(flag)
         {
             System.out.println(menu);
-            // Implementacja funkcji administracyjnych tutaj
             int in = scanner.nextInt();
             switch (in)
             {
@@ -34,38 +32,6 @@ public class AdminInterface
                 case 6-> flag = false;
                 default -> System.out.println("Nieprawidłowy wybór");
             }
-            /*switch(in)
-            {
-                case 1:
-                {
-                    //Przeglądaj użytkowników
-                }
-                case 2:
-                {
-                    //Przeglądaj kurierów
-                }
-                case 3:
-                {
-                    //Dodaj kuriera
-                }
-                case 4:
-                {
-                    //Zbanuj użytkownika
-                }
-                case 5:
-                {
-                    //Zwolnij kuriera
-                }
-                case 6:
-                {
-                    flag = false;
-                    break;
-                }
-                default:
-                {
-                    System.out.println("Nieprawidłowy wybór, spróbuj ponownie.");
-                }
-            }*/
         }
     }
     
@@ -83,19 +49,30 @@ public class AdminInterface
 
     private static void showCuriers()
     {
-        curierDao.getAllCuriers.forEach(System.out::println);
+        curierDao.getAllCuriers().forEach(System.out::println);
     }
 
     private static void addCurier() 
     {
         System.out.println("Login kuriera: ");
-        scanner.nextLine();
         String login = scanner.nextLine();
 
         System.out.println("Hasło: ");
         String password = scanner.nextLine();
 
-        curierDao.addCurier(login, password);
+        System.out.println("ID firmy kuriera: ");
+        int companyId = scanner.nextInt();
+
+        System.out.println("Imię kuriera: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Nazwisko kuriera: ");
+        String surname = scanner.nextLine();
+
+        System.out.println("Pensja: ");
+        double salary = scanner.nextDouble();
+
+        curierDao.addCurier(login, password, companyId, name, surname, salary);
     }
 
     private static void fireCurier()
