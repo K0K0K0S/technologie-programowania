@@ -8,7 +8,7 @@ public class Order
     private int itemId;
     private int buyerId;
     private int sellerId;
-    private int cost;
+    private double cost;
     private LocalDateTime dateOfOrder;
 
     public Order() {}

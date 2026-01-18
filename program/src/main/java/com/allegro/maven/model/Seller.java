@@ -4,9 +4,9 @@ import java.util.List;
 public class Seller
 {
     private int id;
-    private List<Order> ordersCompleted;
-    private List<Item> itemsSold;
-    private int moneyMade;
+    private int ordersCompleted;
+    private int itemsSold;
+    private double moneyMade;
 
     public int getId() {
         return id;

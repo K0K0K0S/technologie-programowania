@@ -1,6 +1,6 @@
 package com.allegro.maven.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class CourierInfo
 {
@@ -8,7 +8,7 @@ public class CourierInfo
     private String name;
     private String surname;
     private double salary;
-    private Date dateOfHiring;
+    private LocalDate dateOfHiring;
 
     public int getId() {
         return id;

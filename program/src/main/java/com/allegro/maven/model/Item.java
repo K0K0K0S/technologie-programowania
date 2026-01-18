@@ -7,7 +7,7 @@ public class Item {
     private String type;
     private String status;
     private int amount;
-    private int price;
+    private double price;
 
     public int getId() {
         return id;
