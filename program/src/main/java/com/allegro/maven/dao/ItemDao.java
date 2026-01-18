@@ -57,7 +57,7 @@ public class ItemDao {
             ps.setString(3, item.getType());
             ps.setString(4, item.getStatus());
             ps.setInt(5, item.getAmount());
-            ps.setInt(6, item.getPrice());
+            ps.setDouble(6, item.getPrice());
 
             ps.executeUpdate();
         } catch (SQLException e) {

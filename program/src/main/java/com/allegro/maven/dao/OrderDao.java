@@ -17,13 +17,13 @@ public class OrderDao {
             VALUES (?, ?, ?, ?, NOW())
         """;
 
-        int totalCost = item.getPrice() * quantity;
+        Double totalCost = item.getPrice() * quantity;
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, item.getId());
             ps.setInt(2, buyerId);
             ps.setInt(3, item.getSellerId());
-            ps.setInt(4, totalCost);
+            ps.setDouble(4, totalCost);
             ps.executeUpdate();
         }
     }

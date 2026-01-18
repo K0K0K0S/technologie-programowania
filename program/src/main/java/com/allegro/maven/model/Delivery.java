@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class Delivery
 {
     private int orderId;
-    private int curierId;
+    private int courierId;
     private String status; // np. "W trakcie", "Dostarczono"
     private LocalDateTime dateOfDelivery;
 
@@ -17,11 +17,11 @@ public class Delivery
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
-    public int getCurierId() {
-        return curierId;
+    public int getCourierId() {
+        return courierId;
     }
-    public void setCurierId(int curierId) {
-        this.curierId = curierId;
+    public void setCourierId(int courierId) {
+        this.courierId = courierId;
     }
     public String getStatus() {
         return status;
