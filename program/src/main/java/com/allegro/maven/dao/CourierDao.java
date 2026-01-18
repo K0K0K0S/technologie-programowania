@@ -22,9 +22,10 @@ public class CourierDao {
                 Courier c = new Courier();
                 c.setId(rs.getInt("Id"));
                 c.setCompanyId(rs.getInt("company_id"));
-                c.setName(rs.getString("name"));
-                c.setSurname(rs.getString("surname"));
-                c.setSalary(rs.getDouble("salary"));
+                //niewiem czy chcesz tworzyć CourierInfo czy osoby plik java
+               // c.setName(rs.getString("name"));
+               // c.setSurname(rs.getString("surname"));
+                //c.setSalary(rs.getDouble("salary"));
                 couriers.add(c);
             }
 
