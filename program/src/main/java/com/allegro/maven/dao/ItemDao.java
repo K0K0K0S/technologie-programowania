@@ -64,4 +64,37 @@ public class ItemDao {
             e.printStackTrace();
         }
     }
+    public Item getItemForUpdate(Connection conn, int itemId) throws SQLException {
+        String sql = "SELECT * FROM Items WHERE id = ? FOR UPDATE";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, itemId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Item item = new Item();
+                item.setId(rs.getInt("id"));
+                item.setSellerId(rs.getInt("seller_id"));
+                item.setName(rs.getString("name"));
+                item.setType(rs.getString("type"));
+                item.setStatus(rs.getString("status"));
+                item.setAmount(rs.getInt("amount"));
+                item.setPrice(rs.getDouble("price"));
+                return item;
+            } else {
+                return null;
+            }
+        }
+    }
+    public void decreaseAmount(Connection conn, int itemId, int quantity) throws SQLException {
+        String sql = "UPDATE Items SET amount = amount - ? WHERE id = ?";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, quantity);
+            ps.setInt(2, itemId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
 }
