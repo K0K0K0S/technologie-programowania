@@ -37,7 +37,7 @@ public class Order
     public void setSellerId(int sellerId) {
         this.sellerId = sellerId;
     }
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
     public void setCost(int cost) {

@@ -1,5 +1,4 @@
 package com.allegro.maven.model;
-
 import java.time.LocalDate;
 
 public class CourierInfo
@@ -34,10 +33,10 @@ public class CourierInfo
     public void setSalary(double salary) {
         this.salary = salary;
     }
-    public Date getDateOfHiring() {
+    public LocalDate getDateOfHiring() {
         return dateOfHiring;
     }
-    public void setDateOfHiring(Date dateOfHiring) {
+    public void setDateOfHiring(LocalDate dateOfHiring) {
         this.dateOfHiring = dateOfHiring;
     }
     

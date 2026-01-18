@@ -38,10 +38,4 @@ public class UserInfo
     public void setLocation(String location) {
         this.location = location;
     }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

@@ -45,10 +45,10 @@ public class Item {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

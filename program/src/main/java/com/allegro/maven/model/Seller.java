@@ -1,5 +1,5 @@
 package com.allegro.maven.model;
-import java.util.List;
+
 
 public class Seller
 {
@@ -14,22 +14,22 @@ public class Seller
     public void setId(int id) {
         this.id = id;
     }
-    public List<Order> getOrdersCompleted() {
+    public int getOrdersCompleted() {
         return ordersCompleted;
     }
-    public void setOrdersCompleted(List<Order> ordersCompleted) {
+    public void setOrdersCompleted(int ordersCompleted) {
         this.ordersCompleted = ordersCompleted;
     }
-    public List<Item> getItemsSold() {
+    public int getItemsSold() {
         return itemsSold;
     }
-    public void setItemsSold(List<Item> itemsSold) {
+    public void setItemsSold(int itemsSold) {
         this.itemsSold = itemsSold;
     }
-    public int getMoneyMade() {
+    public double getMoneyMade() {
         return moneyMade;
     }
-    public void setMoneyMade(int moneyMade) {
+    public void setMoneyMade(double moneyMade) {
         this.moneyMade = moneyMade;
     }
     
