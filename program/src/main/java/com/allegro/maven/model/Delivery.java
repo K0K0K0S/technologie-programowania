@@ -11,5 +11,29 @@ public class Delivery
 
     public Delivery() {}
 
-    // Gettery i settery
+    public int getOrderId() {
+        return orderId;
+    }
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+    public int getCurierId() {
+        return curierId;
+    }
+    public void setCurierId(int curierId) {
+        this.curierId = curierId;
+    }
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    public LocalDateTime getDateOfDelivery() {
+        return dateOfDelivery;
+    }
+    public void setDateOfDelivery(LocalDateTime dateOfDelivery) {
+        this.dateOfDelivery = dateOfDelivery;
+    }
+    
 }
