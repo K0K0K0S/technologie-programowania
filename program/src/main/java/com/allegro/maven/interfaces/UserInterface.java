@@ -22,7 +22,7 @@ public class UserInterface
     //private static String[] filters = {"Kategoria", "Cena minimalna", "Cena maksymalna", "Stan przedmiotu", "Podgląd", "Szukaj", "Powrót do menu głównego"};
     private static String[] STATES = {"Nowy", "Używany", "Uszkodzony"};
 
-    private static void RunClient()
+    public static void RunUser()
     {
         System.out.println("Witaj "+ username +"! Co chciałbyś dzisiaj zrobić?");
         boolean running = true;
@@ -131,10 +131,5 @@ public class UserInterface
 
     private static void showMyOrders() {
         System.out.println("Wyświetlanie zamówień (do zrobienia)");
-    }
-    
-    public static void main(String[] args)
-    {
-        RunClient();
     }
 }

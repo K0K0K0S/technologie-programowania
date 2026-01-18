@@ -6,20 +6,20 @@ import com.allegro.maven.model.Delivery;
 import java.util.List;
 import java.util.Scanner;
 
-public class CurierInterface 
+public class CourierInterface 
 {
     private static Scanner scanner = new Scanner(System.in);
     public static String location;
-    public static int curierID;
-    public static String curierName;
+    public static int courierID;
+    public static String courierName;
 
     private static final DeliveryDao deliveryDao = new DeliveryDao();
     
     private static String MENU = "1) Zaktualizuj swoją lokalizację\n2) Przeglądaj przypisane dostawy\n3) Pokaż paczki w okolicy\n4) Dostarcz paczkę\n5) Wyloguj się";    
     
-    private static void RunCourier()
+    public static void RunCourier()
     {
-        System.out.println("Witaj "+ curierName +"! Co chciałbyś dzisiaj zrobić?");
+        System.out.println("Witaj "+ courierName +"! Co chciałbyś dzisiaj zrobić?");
         boolean flag = true;
         while(flag)
         {
@@ -37,7 +37,7 @@ public class CurierInterface
                 }
                 case 2:
                 {
-                    List<Delivery> deliveries = deliveryDao.getDeliveriesByCurier(curierID);
+                    List<Delivery> deliveries = deliveryDao.getDeliveriesByCourier(courierID);
                     System.out.println("Twoje dostawy:");
                     for (Delivery d : deliveries)
                     {
