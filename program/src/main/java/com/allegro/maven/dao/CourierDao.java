@@ -10,7 +10,7 @@ import java.util.List;
 public class CourierDao {
 
     // Pobranie wszystkich kurierów
-    public List<Courier> getAllCuriers() {
+    public List<Courier> getAllCouriers() {
         List<Courier> couriers = new ArrayList<>();
         String sql = "SELECT Id, company_id, name, surname, salary FROM CourierInfo";
 
