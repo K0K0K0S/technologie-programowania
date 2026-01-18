@@ -7,7 +7,6 @@ public class UserInfo
     private String surname;
     private int PESEL;
     private String location;
-    private String password;
 
     //Gettery i settery
 }
