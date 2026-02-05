@@ -36,10 +36,7 @@ public class UserInterface
                 case 2 -> sellItem();
                 case 3 -> buyItem();
                 case 4 -> showMyOrders();
-                case 5 -> {
-                    System.out.println("Wylogowywanie, żegnaj");
-                    running = false;
-                }
+                case 5 -> running = false;
                 default -> System.out.println("Nieprawidłowy wybór");
             }
         }

@@ -17,8 +17,8 @@ public class AdminInterface
     public static void RunAdmin()
     {
         System.out.println("Witaj w Panelu Administratora! Co chciałbyś dzisiaj zrobić?");
-        boolean flag = true;
-        while(flag)
+        boolean running = true;
+        while(running)
         {
             System.out.println(menu);
             int in = scanner.nextInt();
@@ -29,7 +29,7 @@ public class AdminInterface
                 case 3 -> addCourier();
                 case 4 -> showCouriers();
                 case 5 -> fireCourier();
-                case 6-> flag = false;
+                case 6-> running = false;
                 default -> System.out.println("Nieprawidłowy wybór");
             }
         }
